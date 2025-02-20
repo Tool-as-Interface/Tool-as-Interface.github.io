@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Tool-as-Interface: Learning Robot Tool Use from Human Play through Imitation Learning">
+  <meta name="keywords" content="Robotic Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tool-as-Interface: Learning Robot Tool Use from Human Play through Imitation Learning</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV4ZJ9PVSV"></script>  
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FV4ZJ9PVSV');
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script>
+
+    function updateInteractive() {
+      var task = document.getElementById("interative-menu").value;
+
+      console.log("interactive", task)
+
+      var img = document.getElementById("interactive-img");
+      img.src = "media/interactive/" + 
+                  task + 
+                  "_crop.png"
+
+      var html_1 = document.getElementById("interactive-html-1");
+      html_1.src = "media/interactive/" + 
+                  task + 
+                  "_mask.html"
+
+      var html_2 = document.getElementById("interactive-html-2");
+      html_2.src = "media/interactive/" + 
+                  task + 
+                  "_feature.html"
+    }
+    
+    function updateTracking() {
+      var task = document.getElementById("tracking-menu").value;
+
+      console.log("interactive", task)
+
+      var vid = document.getElementById("tracking-vid");
+      vid.src = "media/interactive/" + 
+                  task + 
+                  ".mp4"
+
+      var html_1 = document.getElementById("tracking-html");
+      html_1.src = "media/interactive/" + 
+                  task + 
+                  ".html"
+    }
+
+
+
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/fontawesome/css/fontawesome.css">
+  <link rel="stylesheet" href="./static/fontawesome/css/brands.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body onload="updateInteractive();">
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-fullhd">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Tool-as-Interface: Learning Robot Tool Use <br>from Human Play through Imitation Learning</h1>
+          <!-- <h3 class="title is-4 conference-authors"><a target="_blank" href="https://www.corl.org/">CoRL 2024 <font color = "#C21E56"><strong>(Oral)</strong></font></a></h3> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a target="_blank" href="https://haonan16.github.io/">Haonan Chen</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="#">Cheng Zhu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://yunzhuli.github.io/">Yunzhu Li</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://krdc.web.illinois.edu/">Katherine Driggs-Campbell</a><sup>1</sup>
+            </span>
+          </div>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Illinois Urbana-Champaign,</span>
+            <span class="author-block"><sup>2</sup>Columbia University,</span>
+            <br>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a target="_blank" href="tool_as_interface.pdf"
+                      class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+    
+                <!-- Arxiv Link. -->
+                <!-- <span class="link-block">
+                  <a target="_blank" href="https://arxiv.org/abs/"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file"></i>
+                    </span>
+                    <span>ArXiv</span>
+                  </a>
+                </span> -->
+    
+                <!-- Video Link. -->
+                <!-- <span class="link-block">
+                  <a target="_blank" href="https://www.youtube.com/"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span> -->
+    
+                <!-- Talk Link. -->
+                <!-- <span class="link-block">
+                  <a target="_blank" href="https://youtu.be/QcuXwmQgurE"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </span>
+                    <span>Talk</span>
+                  </a>
+                </span> -->
+    
+    
+                <!-- Colab Link. -->
+                <!-- <span class="link-block">
+                  <a target="_blank" href="https://colab.research.google.com/drive/1HAqemP4cE81SQ6QO1-N85j5bF4C0qLs0?usp=sharing"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                    </span>
+                    <span>Colab</span>
+                    </a>
+                </span> -->
+    
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a target="_blank" href="https://github.com/human-play/Tool_as_Interface.git"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+    
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-fullhd">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-vcentered  is-centered">
+          <video id="teaser" autoplay muted loop height="60%" width="60%">
+            <source src="media/videos/teaser.mp4"
+                    type="video/mp4">
+          </video>
+          </br>
+        </div>
+        <br>
+        <h2 class="subtitle has-text-centered">
+        D<sup>3</sup>Fields is a <b>3D</b>, <b>dynamic</b>, and <b>semantic</b> scene representation using foundation models,<br>which supports <b>zero-shot</b> generalizable rearrangement tasks.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+<section class="section">
+
+  <!-- Paper video. -->
+  <div class="container is-max-widescreen">
+    <div class="rows has-text-centered">
+      <h2 class="title is-3">Autonomous Pan Flipping</h2>
+      <div class="publication-video">
+        <video controls width="80%">
+          <source src="media/videos/teaser_video.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Abstract. -->
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Tool use is critical for enabling robots to perform complex real-world tasks, and leveraging human tool-use data can be instrumental for teaching robots. However, existing data collection methods like teleoperation are slow, prone to control delays, and unsuitable for dynamic tasks. In contrast, human play—where humans directly perform tasks with tools—offers natural, unstructured interactions that are both efficient and easy to collect. Building on the insight that humans and robots can share the same tools, we propose a framework to transfer tool-use knowledge from human play to robots. Using two RGB cameras, our method generates 3D reconstruction, applies Gaussian splatting for novel view augmentation, employs segmentation models to extract embodiment-agnostic observations, and leverages task-space tool-action representations to train visuomotor policies. We validate our approach on diverse real-world tasks, including meatball scooping, pan flipping, wine bottle balancing, and other complex tasks. Our method achieves a 71% higher average success rate compared to diffusion policies trained with teleoperation data and reduces data collection time by 77%, with some tasks solvable only by our framework. Additionally, our method bridges the embodiment gap, improves robustness to variations in camera viewpoints and robot configurations, and generalizes effectively across objects and spatial setups.
+          </p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="rows">
+      <!-- Title and Description -->
+      <h2 class="title is-3">Pan Flipping with Different Objects</h2>
+      <p class="content has-text-justified">
+        Pan flipping involves dynamically flipping various objects, such as eggs, burger buns, and meat patties. This demonstrates precision, agility, and the ability to adapt to different challenges in motion control. Our framework enables robots to learn highly dynamic movements.
+      </p>
+      <!-- First Row: Egg -->
+      <div class="columns">
+        <!-- Egg - Slow Motion Camera -->
+        <div class="column has-text-centered video-container">
+          <video id="dist1"
+            controls
+            muted
+            autoplay
+            loop
+            width="99%">
+            <source src="media/videos/pan_flip_egg_slo_mo_25x.mp4" 
+            type="video/mp4">
+          </video>
+          <div class="overlay-text">Flipping an Egg</div>
+        </div>
+        <div class="column has-text-centered video-container">
+          <video id="dist2"
+            controls
+            muted
+            autoplay
+            loop
+            width="99%">
+            <source src="media/videos/pan_flip_bun_slo_mo_25x.mp4" 
+            type="video/mp4">
+          </video>
+          <div class="overlay-text">Flipping an Burger Bun</div>
+        </div>
+
+        <!-- Egg - Normal Speed -->
+        <div class="column has-text-centered video-container">
+          <video id="dist3"
+            controls
+            muted
+            autoplay
+            loop
+            width="99%">
+            <source src="media/videos/pan_flip_patty_slo_mo_25x.mp4" 
+            type="video/mp4">
+          </video>
+          <div class="overlay-text">Flipping an Meat Patty</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="rows">
+      <!-- Title and Description -->
+      <h2 class="title is-3">Robustness Testing</h2>
+      <p class="content has-text-justified">
+        Our framework is robust to various perturbations, including a moving camera, moving base, and human perturbations.
+      </p>
+
+  <!-- Moving Camera -->
+  <h3 class="title is-4">Robustness to Shaking Camera</h3>
+  <div class="columns">
+    <div class="column is-one-third has-text-centered">
+      <video id="camera-observed"
+        controls
+        muted
+        autoplay
+        loop
+        width="99%">
+        <source src="media/videos/hammering_nail_shaking_cam_1x.mp4" type="video/mp4">
+      </video>
+      <div class="overlay-text">Nail Hammering</div>
+    </div>
+    <div class="column is-one-third has-text-centered">
+      <video id="camera-execution"
+        controls
+        muted
+        autoplay
+        loop
+        width="99%">
+        <source src="media/videos/meatball_shaking_cam_1x.mp4" type="video/mp4">
+      </video>
+      <div class="overlay-text">Meatball Scooping</div>
+    </div>
+    <div class="column is-one-third has-text-centered">
+      <video id="camera-execution"
+        controls
+        muted
+        autoplay
+        loop
+        width="99%">
+        <source src="media/videos/pan_flip_egg_shaking_cam_1x.mp4" type="video/mp4">
+      </video>
+      <div class="overlay-text">Pan Flipping - Egg</div>
+    </div>
+  </div>
+
+  <h3 class="title is-4">Base Robustness, Trajectory Memorization, and End Effector Stabilization Testing</h3>
+  <div class="columns">
+    <div class="column is-one-third has-text-centered">
+      <video id="camera-observed"
+        controls
+        muted
+        autoplay
+        loop
+        width="99%">
+        <source src="media/videos/push_base_human_side_3x.mp4" type="video/mp4">
+      </video>
+      <div class="overlay-text">Testing Robustness to a Shaking Base</div>
+    </div>
+    <div class="column is-one-third has-text-centered">
+      <video id="camera-execution"
+        controls
+        muted
+        autoplay
+        loop
+        width="99%">
+        <source src="media/videos/meatball_memorize_testing_3x.mp4" type="video/mp4">
+      </video>
+      <div class="overlay-text">Trajectory Memorization Test: Camera Shaking Followed by Black Input</div>
+    </div>
+    <div class="column is-one-third has-text-centered">
+      <video id="camera-execution"
+        controls
+        muted
+        autoplay
+        loop
+        width="99%">
+        <source src="media/videos/meatball_scooping_chickhead_2x.mp4" type="video/mp4">
+      </video>
+      <div class="overlay-text">Testing if the Policy can Act Like Chickhead with Stable End Effector When the Base is Moving</div>
+    </div>
+  </div>
+  
+
+
+  <!-- Human Perturbation -->
+  <h3 class="title is-4">Robustness to Human Perturbation</h3>
+  <div class="columns">
+    <div class="column is-one-third has-text-centered">
+      <video id="nail-tracking"
+        controls
+        muted
+        autoplay
+        loop
+        width="99%">
+        <source src="media/videos/hammer_nail_tracking_4x.mp4" type="video/mp4">
+      </video>
+      <div class="overlay-text">Nail Tracking</div>
+    </div>
+    <div class="column is-one-third has-text-centered">
+      <video id="human-throwing"
+        controls
+        muted
+        autoplay
+        loop
+        width="99%">
+        <source src="media/videos/meatball_human_throwing_8x.mp4" type="video/mp4">
+      </video>
+      <div class="overlay-text">Human Throwing Meatball</div>
+    </div>
+    <div class="column is-one-third has-text-centered">
+      <video id="burger-making"
+        controls
+        muted
+        autoplay
+        loop
+        width="99%">
+        <source src="media/videos/pan_flip_three_6x.mp4" type="video/mp4">
+      </video>
+      <div class="overlay-text">Human Flipping Back Multiple Times</div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="rows">
+      <!-- Title for Precision Tests -->
+      <h2 class="title is-3">Precision Tests</h2>
+      <p class="content has-text-justified">
+        This section highlights the precision capabilities of our framework in tasks that require high accuracy, such as hammering a nail and wine balancing.
+      </p>
+
+      <!-- Row for Precision Tests -->
+      <div class="columns is-centered">
+        <div class="column is-one-third has-text-centered">
+          <video id="precision-hammering"
+            controls
+            muted
+            autoplay
+            loop
+            width="99%">
+            <source src="media/videos/hammering_nail_precision_4x.mp4" type="video/mp4">
+          </video>
+          <div class="overlay-text">Hammering a Nail</div>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video id="precision-wine-balancing"
+            controls
+            muted
+            autoplay
+            loop
+            width="99%">
+            <source src="media/videos/wine_balancing_ours_human_moving_8x.mp4" type="video/mp4">
+          </video>
+          <div class="overlay-text">Wine Balancing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 has-text-centered">Example 3D Reconstruction</h2>
+    
+    <p class="content has-text-justified">
+      This example demonstrates a 3D reconstruction generated using 
+      <strong><a href="https://github.com/naver/mast3r" target="_blank">MASt3R</a></strong>. 
+      The model is created from the two input images shown below. 
+      You can interact with the 3D model by rotating and zooming in/out.
+    </p>
+
+    <!-- Input Images (Smaller Size) -->
+    <div class="columns is-centered">
+      <div class="column is-one-quarter has-text-centered">
+        <figure>
+          <img src="media/images/first_frame_2.png" alt="Input Image 1" style="width: 100%; max-width: 250px;">
+          <figcaption class="has-text-grey">Input Image 1</figcaption>
+        </figure>
+      </div>
+      <div class="column is-one-quarter has-text-centered">
+        <figure>
+          <img src="media/images/first_frame_3.png" alt="Input Image 2" style="width: 100%; max-width: 250px;">
+          <figcaption class="has-text-grey">Input Image 2</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- 3D Model Viewer (Larger Size) -->
+    <div class="box has-text-centered">
+      <h3 class="title is-4">3D Reconstruction</h3>
+      <model-viewer 
+        id="eggModel" 
+        src="media/images/egg.glb" 
+        alt="3D Reconstruction" 
+        ar 
+        auto-rotate 
+        camera-controls 
+        shadow-intensity="0"
+        environment-image="neutral"
+        camera-orbit="0deg 75deg 2m"  
+        field-of-view="20deg"         
+        style="width: 100%; max-width: 1200px; height: 400px; margin: 0 auto;">
+      </model-viewer>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="rows">
+      <h2 class="title is-3">Trajectory Smoothness Comparison</h2>
+      <p class="content has-text-justified">
+        Human manipulation is inherently more natural and intuitive. Consequently, our policy generates significantly faster and smoother action trajectories compared to policies trained using teleoperated devices.
+      </p>
+      <div class="columns is-multiline is-centered">
+        <div class="column is-one-third has-text-centered">
+          <video id="ours-smooth"
+            controls
+            muted
+            autoplay
+            loop
+            width="99%">
+            <source src="media/videos/meatball_ours_smooth_1x.mp4" 
+            type="video/mp4">
+          </video>
+          <div class="overlay-text">Ours</div>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video id="baseline-nonsmooth"
+            controls
+            muted
+            autoplay
+            loop
+            width="99%">
+            <source src="media/videos/meatball_baseline_nonsmooth_1x.mp4" 
+            type="video/mp4">
+          </video>
+          <div class="overlay-text">Policy Trained Using Space Mouse Collected Demonstration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <!-- Introduction -->
+    <h2 class="title is-3 mb-5">Data Collection Methods</h2>
+    <p class="content has-text-justified mb-6">
+      Human manipulation showcases unparalleled versatility, ranging from delicate precision tasks 
+      to intense, contact-rich interactions and dynamic, high-speed maneuvers—none of which are 
+      effectively presented by traditional teleportation systems.
+    </p>
+
+    <!-- Meatball Scooping -->
+    <div class="mb-6">
+      <h3 class="title is-4 mb-4">Meatball Scooping</h3>
+      <div class="columns is-centered">
+        <div class="column is-two-thirds">
+          <video class="has-ratio" width="100%" controls muted autoplay loop>
+            <source src="media/videos/meatball_data_collection.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hammering a Nail -->
+    <div class="mb-6">
+      <h3 class="title is-4 mb-4">Hammering a Nail</h3>
+      <div class="columns">
+        <div class="column">
+          <video class="has-ratio" width="100%" controls muted autoplay loop>
+            <source src="media/videos/hammer_data_collection.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pan Flipping -->
+    <div class="mb-6">
+      <h3 class="title is-4 mb-4">Pan Flipping</h3>
+      <div class="columns">
+        <div class="column">
+          <video class="has-ratio" width="100%" controls muted autoplay loop>
+            <source src="media/videos/pan_flip_data_collection.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wine Balancing -->
+    <div class="mb-6">
+      <h3 class="title is-4 mb-4">Wine Balancing</h3>
+      <div class="columns">
+        <div class="column">
+          <div class="video-container">
+            <video class="has-ratio" width="100%" controls muted autoplay loop>
+              <source src="media/videos/wine_data_collection.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soccer -->
+    <div class="mb-6">
+      <h3 class="title is-4 mb-4">Playing Soccer</h3>
+      <div class="columns">
+        <div class="column">
+          <video class="has-ratio" width="100%" controls muted autoplay loop>
+            <source src="media/videos/soccer_data_collection.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="rows">
+      <h2 class="title is-3">Failure Modes</h2>
+      <p class="content has-text-justified">
+        Our framework may fail to complete the task under certain conditions. If the camera moves too quickly, the system can lose track of key visual cues, leading to task failure. In pan flipping, a burger bun might bounce out of the pan when the robot applies excessive upward force.
+      </p>
+
+      <!-- Videos in a Centered Row -->
+      <div class="columns is-centered">
+        <div class="column is-one-third has-text-centered">
+          <video id="fast-camera-failure"
+            controls
+            muted
+            autoplay
+            loop
+            width="100%">
+            <source src="media/videos/meatball_fast_cam_failure_1x.mp4" type="video/mp4">
+          </video>
+          <div class="overlay-text">Fast Camera Failure</div>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video id="bun-out-of-pan"
+            controls
+            muted
+            autoplay
+            loop
+            width="100%">
+            <source src="media/videos/pan_flip_bun_out_1x.mp4" type="video/mp4">
+          </video>
+          <div class="overlay-text">Burger Bun Out of Pan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="rows">
+      <!-- Title and Description -->
+      <h2 class="title is-3">Food Preparation</h2>
+      <p class="content has-text-justified">
+        Our trained pan-flipping policy assists in food preparation, collaborating with humans to flip meat patties or eggs for burgers and sandwiches.
+      </p>
+      <div class="columns is-centered">
+        <div class="column is-one-third has-text-centered">
+          <video id="burger-making"
+            controls
+            muted
+            autoplay
+            loop
+            width="99%">
+            <source src="media/videos/burger_making_1x.mp4" type="video/mp4">
+          </video>
+          <div class="overlay-text">Burger Preparation</div>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <video id="sandwich-making"
+            controls
+            muted
+            autoplay
+            loop
+            width="99%">
+            <source src="media/videos/sandwich_making_1x.mp4" type="video/mp4">
+          </video>
+          <div class="overlay-text">Sandwich Preparation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 
+<section class="section" id="BibTeX">
+  <div class="container is-max-widescreen content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{wang2024d3fields,
+    title={D$^3$Fields: Dynamic 3D Descriptor Fields for Zero-Shot Generalizable Rearrangement},
+    author={Wang, Yixuan and Zhang, Mingtong and Li, Zhuoran and Kelestemur, Tarik and Driggs-Campbell, Katherine and Wu, Jiajun and Fei-Fei, Li and Li, Yunzhu},
+    booktitle={8th Annual Conference on Robot Learning},
+    year={2024}
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content has-text-centered">
+          <p>
+            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>, <a href="https://peract.github.io/">PerAct</a>, and <a href="https://voxposer.github.io/">VoxPoser</a>. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
