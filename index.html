@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Tool-as-Interface: Learning Robot Policies from Human Tool Usage through Imitation Learning">
+        content="Tool-as-Interface: Learning Robot Policies from Observing Human Tool Use">
   <meta name="keywords" content="Robotic Manipulation">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tool-as-Interface: Learning Robot Policies from Human Tool Usage through Imitation Learning</title>
+  <title>Tool-as-Interface: Learning Robot Policies from Observing Human Tool Use</title>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV4ZJ9PVSV"></script>  
   <script>
@@ -89,7 +89,7 @@
     <div class="container is-fullhd">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Tool-as-Interface: Learning Robot Policies <br>from Human Tool Usage through Imitation Learning</h1>
+          <h1 class="title is-1 publication-title">Tool-as-Interface: Learning Robot Policies <br>from Observing Human Tool Use</h1>
           <!-- <h3 class="title is-4 conference-authors"><a target="_blank" href="https://www.corl.org/">CoRL 2024 <font color = "#C21E56"><strong>(Oral)</strong></font></a></h3> -->
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -99,10 +99,10 @@
               <a target="_blank" href="#">Cheng Zhu</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a target="_blank" href="#">Shuijing Liu</a><sup>3</sup>,
+              <a target="_blank" href="https://shuijing725.github.io">Shuijing Liu</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a target="_blank" href="https://yunzhuli.github.io/">Yunzhu Li</a><sup>2</sup>,
+              <a target="_blank" href="https://yunzhuli.github.io/">Yunzhu Li</a><sup>3</sup>,
             </span>
             <span class="author-block">
               <a target="_blank" href="https://krdc.web.illinois.edu/">Katherine Driggs-Campbell</a><sup>1</sup>
@@ -111,8 +111,8 @@
           
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>University of Illinois Urbana-Champaign,</span>
-            <span class="author-block"><sup>2</sup>Columbia University,</span>
-            <span class="author-block"><sup>3</sup>University of Texas at Austin,</span>
+            <span class="author-block"><sup>2</sup>UT Austin,</span>
+            <span class="author-block"><sup>3</sup>Columbia University,</span>
             <br>
           </div>
 
@@ -203,7 +203,7 @@
                     <span class="icon">
                         <i class="fab fa-youtube"></i>
                     </span>
-                    <span>Theory-Explaination Video</span>
+                    <span>Technical Explaination Video</span>
                   </a>
                 </span>
                 </div>
@@ -282,7 +282,7 @@
     <h2 class="title is-3">Teaser Video</h2>
     <div style="display: flex; justify-content: center; margin: 0 auto;">
       <iframe
-        src="https://www.youtube.com/watch/embed/cr5T14eBt0M"
+        src="https://www.youtube.com/embed/cr5T14eBt0M"
         style="width: 80%; height: 540px; border: none;"
         allow="autoplay; encrypted-media"
         allowfullscreen>
@@ -293,10 +293,10 @@
 <!-- theory video. -->
 <div class="container is-max-widescreen mb-6">
   <div class="has-text-centered">
-    <h2 class="title is-3">Theory-Explanation Video</h2>
+    <h2 class="title is-3">Technical Explaination Video</h2>
     <div style="display: flex; justify-content: center; margin: 0 auto;">
       <iframe
-        src="https://www.youtube.com/watch/embed/dkU0Pl1LFq8"
+        src="https://www.youtube.com/embed/dkU0Pl1LFq8"
         style="width: 80%; height: 540px; border: none;"
         allow="autoplay; encrypted-media"
         allowfullscreen>
@@ -312,7 +312,10 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Tool use is critical for enabling robots to perform complex real-world tasks, and leveraging human tool-use data can be instrumental for teaching robots. However, existing data collection methods like teleoperation are slow, prone to control delays, and unsuitable for dynamic tasks. In contrast, human play—where humans directly perform tasks with tools—offers natural, unstructured interactions that are both efficient and easy to collect. Building on the insight that humans and robots can share the same tools, we propose a framework to transfer tool-use knowledge from human play to robots. Using two RGB cameras, our method generates 3D reconstruction, applies Gaussian splatting for novel view augmentation, employs segmentation models to extract embodiment-agnostic observations, and leverages task-space tool-action representations to train visuomotor policies. We validate our approach on diverse real-world tasks, including meatball scooping, pan flipping, wine bottle balancing, and other complex tasks. Our method achieves a 71% higher average success rate compared to diffusion policies trained with teleoperation data and reduces data collection time by 77%, with some tasks solvable only by our framework. Additionally, our method bridges the embodiment gap, improves robustness to variations in camera viewpoints and robot configurations, and generalizes effectively across objects and spatial setups.
+            Tool use is essential for enabling robots to perform complex real-world tasks, but learning such skills requires extensive datasets. While teleoperation is widely used, it is slow, delay-sensitive, and poorly suited for dynamic tasks. In contrast, human videos provide a natural way for data collection without specialized hardware, though they pose challenges on robot learning due to viewpoint variations and embodiment gaps.
+    To address these challenges, we propose a framework that transfers tool-use knowledge from humans to robots. To improve the policy's robustness to viewpoint variations, we use two RGB cameras to reconstruct 3D scenes and apply Gaussian splatting for novel view synthesis. 
+    We reduce the embodiment gap using segmented observations and tool-centric, task-space actions to achieve embodiment-invariant visuomotor policy learning.
+    Our method achieves a 71% improvement in task success and a 77% reduction in data collection time compared to diffusion policies trained on teleoperation with equivalent time budgets. Our method also reduces data collection time by 41% compared with the state-of-the-art data collection interface. 
           </p>
           </p>
         </div>
